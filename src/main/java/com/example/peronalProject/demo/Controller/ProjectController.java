@@ -18,12 +18,18 @@ public class ProjectController {
     @Autowired
     Service service;
 
+<<<<<<< Updated upstream
     //Post product data in product detail entity
     @PostMapping("/post-product-details")
     public CommonModel userDetailsave(@RequestBody ProductDetails productDetails){
         CommonModel commonModel = new CommonModel();
         commonModel = service.uploadProductData(productDetails);
         return commonModel;
+=======
+    @GetMapping("/get_data_for_project")
+    public List<DumyData> getDataFromUser(){
+    return service.getDataByModel();
+>>>>>>> Stashed changes
     }
 
     //API for get all product data

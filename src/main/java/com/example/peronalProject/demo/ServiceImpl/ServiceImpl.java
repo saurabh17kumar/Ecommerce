@@ -39,6 +39,7 @@ public class ServiceImpl implements Service {
         return commonModel;
     }
 
+<<<<<<< Updated upstream
     //Get All product data
     public List<ProductDetails> getAllProduct() {
         List<ProductDetails> productDetails = new ArrayList<>();
@@ -80,6 +81,26 @@ public class ServiceImpl implements Service {
     }
 
    //Method for check this email exist or not
+=======
+       String password = PasswordEncoder.encode(user.getPassword());
+       user.setPassword(password);
+       
+
+       try {
+           if (user.getEmail() != null && user.getName() != null && user.getPassword() != null && user.getMobileNo() != null) {
+               userRepository.save(user);
+               commonModel.setCode("0000");
+               commonModel.setMsg("Data save successfully");
+           } else {
+               commonModel.setCode("1111");
+               commonModel.setMsg("Please fill Required field");
+           }
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+       return commonModel;
+   }
+>>>>>>> Stashed changes
    public User userExist(String email, String password){
        CommonModel commonModel = new CommonModel();
         return userRepository.findByEmail(email);
@@ -88,6 +109,7 @@ public class ServiceImpl implements Service {
    //Validation check for login and match the email and password
     public LoginVallidation passwordMatch(String password, User user1){
         LoginVallidation commonModel = new LoginVallidation();
+        try{
        if (PasswordEncoder.matches(password, user1.getPassword())){
            commonModel.setCode("0000");
            commonModel.setMsg("Login successfully");
@@ -97,6 +119,9 @@ public class ServiceImpl implements Service {
            commonModel.setCode("1111");
            commonModel.setMsg("Password did not matched");
        }
+    }catch(Exception e){
+        System.out.println(e);
+    }
        return commonModel;
     }
 

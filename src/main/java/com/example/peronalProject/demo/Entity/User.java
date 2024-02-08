@@ -20,8 +20,12 @@ public class User {
     @Column(name = "password")
     private String password;
     @Column(name = "mobileNo")
+<<<<<<< Updated upstream
     private Long mobileNo;
 
 //    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 //    private List<ProductDetails> productDetailsList;
+=======
+    private String mobileNo;
+>>>>>>> Stashed changes
 }
